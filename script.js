@@ -10,8 +10,8 @@ const firebaseConfig = {
   appId: "1:796463390807:web:b90e3c34d15828ad85c312"
 };
 
-const email = "abc@gmail.com";
-const password = "123456789";
+const email = abc@gmail.com;
+const password = 123456789;
 
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
@@ -52,6 +52,7 @@ firebase.auth().signInWithEmailAndPassword(email, password)
   .catch(err => {
     alert("Error: " + err.message);
   });
+
 
 
 
