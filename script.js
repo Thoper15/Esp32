@@ -1,4 +1,4 @@
-const checkbox = document.getElementById("toggle-switch") 
+
 const firebaseConfig = { 
   apiKey: "AIzaSyARTSgtH4WZWHr9eh67uedbGCkdteHXPKk", 
   authDomain: "esp32-on-off-1eb44.firebaseapp.com", 
@@ -8,33 +8,45 @@ const firebaseConfig = {
   messagingSenderId: "796463390807", 
   appId: "1:796463390807:web:b90e3c34d15828ad85c312" 
 }; 
-const email = abc@gamil.com 
-  const password = 123456789 
-  firebase.initializeApp(firebaseConfig); 
+firebase.initializeApp(firebaseConfig); 
 const db = firebase.database(); 
+
+const checkbox = document.getElementById("toggle-switch") 
+
 function Encendido() { 
   document.getElementById('estado').innerHTML = "ENCENDIDO" 
   document.body.style.backgroundColor = "#f7f7f0" 
   document.body.style.color = "#2d405f" 
   document.getElementById("foco").src = "img/foco_encendido.png" 
 } 
+
 function Apagado() { 
   document.getElementById('estado').innerHTML = "APAGADO" 
   document.body.style.backgroundColor = "#2d405f" 
   document.body.style.color = "#f7f7f0" 
   document.getElementById("foco").src = "img/foco_apagado.png" 
 }
-firebase.auth().signInWithEmailAndPassword(email, password) 
-  .then(user => { alert("¡Login exitoso!"); }) 
-  .catch(err => { alert("Error: " + err.message); }); 
+ 
 checkbox.addEventListener('change', (e) => {
   // e.target.checked es true/false 
   console.log('Estado:', e.target.checked); 
   if (e.target.checked) {
-    Encendido() db.ref("/").update({ led: true }); 
+    Encendido() 
+    db.ref("/").update({ led: true }); 
   } else { 
-    Apagado() db.ref("/").update({ led: false }); 
+    Apagado() 
+    db.ref("/").update({ led: false }); 
   } });
+db.ref("/led").on("value", snapshot => {
+  const estado = snapshot.val();
+  if (estado) {
+    checkbox.checked = true;
+    Encendido()
+  } else {
+    checkbox.checked = false;
+    Apagado()
+  }
+});
 
 
 
