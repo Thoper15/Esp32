@@ -1,0 +1,136 @@
+@font-face {
+    font-family: 'BorderWall';
+    src: url(font/BorderWall.otf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:  #2d405f;
+    color: #f7f7f0;
+    font-family: 'BorderWall', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main h1 {
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 50px;
+    margin: 20px;
+}
+
+#foco {
+    display: block;
+    width: 250px;
+}
+
+.controles {
+    width: 600px;
+    height: 400px;
+    text-align: center;
+    background-image: url('img/interruptor.png');
+    background-position: center;
+    position: relative;
+}
+
+/* Toggle Switch usando checkbox oculto */
+.toggle-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-163%, -53%);
+    display: inline-block;
+    /*display: inline-block;*/
+}
+
+/* Toggle Switch usando checkbox oculto */
+.toggle-container {
+    position: relative;
+    display: inline-block;
+}
+
+.toggle-container input[type="checkbox"] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Toggle Switch Base*/
+.toggle-switch {
+    position: relative;
+    width: 170px;
+    height: 85px;
+    background: #e8e8e3;
+    border: 5px solid #2c2c2c;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+    display: block;
+    box-shadow: 3px 3px 0px #d0d0cc;
+}
+
+/* Estado ON cuando checkbox está checked */
+.toggle-container input[type="checkbox"]:checked+.toggle-switch {
+    background: #e8e8e3;
+    border: 5px solid #2c2c2c;
+    box-shadow: 2px 2px 0px #d0d0cc;
+}
+
+/* Círculo deslizante*/
+.toggle-switch::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    width: 61px;
+    height: 65px;
+    background: #f8f8f3;
+    border: 3px solid #2c2c2c;
+    border-radius: 30%;
+    transform: translateY(-50%);
+    transition: all 0.2s ease;
+    box-shadow: 2px 2px 0px #d0d0cc;
+}
+
+.toggle-container input[type="checkbox"]:checked+.toggle-switch::before {
+    left: 89px;
+    background: #f8f8f3;
+    box-shadow: 1px 1px 0px #d0d0cc;
+}
+
+/* Texto OFF */
+.toggle-switch::after {
+    content: 'OFF';
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #4f504e;
+    font-weight: bold;
+    font-size: 25px;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+}
+
+/* Texto ON */
+.toggle-container input[type="checkbox"]:checked+.toggle-switch::after {
+    content: 'ON';
+    left: 18px;
+    right: auto;
+    color: #4f504e;
+}
