@@ -8,6 +8,8 @@ const firebaseConfig = {
   messagingSenderId: "796463390807",
   appId: "1:796463390807:web:b90e3c34d15828ad85c312"
 };
+const email = abc@gamil.com
+const password = 123456789
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 function Encendido() {
@@ -22,6 +24,13 @@ function Apagado() {
   document.body.style.color = "#f7f7f0"
   document.getElementById("foco").src = "img/foco_apagado.png"
 }
+ firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(user => {
+          alert("¡Login exitoso!");
+        })
+        .catch(err => {
+          alert("Error: " + err.message);
+        });
 checkbox.addEventListener('change', (e) => {
   // e.target.checked es true/false
   console.log('Estado:', e.target.checked);
@@ -32,4 +41,5 @@ checkbox.addEventListener('change', (e) => {
     Apagado()
     db.ref("/").update({ led: false });
   }
+
 });
